@@ -9,10 +9,10 @@
         <div class="login-form">
             <form action="" method="get">
                 <label for="email-input">Email</label>
-                <input type="text" id="email-input">
+                <input type="text" id="email-input" required>
                 <label for="password-input">Password</label>
                 <i :class="icon"  @click="showPassword"></i>
-                <input :type="type" id="password-input">
+                <input :type="type" id="password-input" required pattern="[0-9a-fA-F]{8,16}">
                 <button>Log in</button>
             </form>
         </div>
