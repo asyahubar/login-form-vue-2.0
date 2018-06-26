@@ -7,12 +7,21 @@
             </div>
         <!--</div>-->
         <div class="login-form">
-            <form action="" method="get">
+            <form action="" method="get" @submit.prevent="signingIn">
                 <label for="email-input">Email</label>
-                <input type="text" id="email-input" required>
+                <input
+                    type="email"
+                    id="email-input"
+                    required
+                    v-model="emailInput">
                 <label for="password-input">Password</label>
                 <i :class="icon"  @click="showPassword"></i>
-                <input :type="type" id="password-input" required pattern="[0-9a-fA-F]{8,16}">
+                <input
+                    :type="type"
+                    id="password-input"
+                    required
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    v-model="passwordInput">
                 <button>Log in</button>
             </form>
         </div>
@@ -25,13 +34,26 @@
         data() {
             return {
                 type: 'password',
-                icon: 'fa fa-eye'
+                icon: 'fa fa-eye',
+                asya: {
+                    email: 'asya@mail.com',
+                    password: 'myPass1234'
+                },
+                emailInput: '',
+                passwordInput: ''
             }
         },
         methods: {
             showPassword() {
                 (this.icon === "fa fa-eye") ? this.icon = 'fas fa-eye-slash' : this.icon = 'fa fa-eye';
                 (this.type === 'password') ? this.type = 'text' : this.type = 'password';
+            },
+            signingIn() {
+                if (this.asya.email === this.emailInput && this.asya.password === this.passwordInput) {
+                    this.$router.push( 'asya' );
+                } else {
+                    alert('Some data you have inputted doesn\'t match. Try again!');
+                }
             }
         }
     }
@@ -47,12 +69,6 @@
         height: 300px;
         margin: 100px auto 0 auto;
         position: relative;
-
-        /*.container {*/
-            /*display: inline-block;*/
-            /*width: 280px;*/
-            /*!*box-sizing: border-box;*!*/
-            /*height: 300px;*/
 
             .login-text {
                 position: absolute;
@@ -79,7 +95,6 @@
                     letter-spacing: 0.2px;
                 }
             }
-        /*}*/
 
         .login-form {
             position: absolute;
@@ -88,11 +103,10 @@
             box-sizing: border-box;
             padding: 40px;
             background-color: #32475C;
-            /*color: #E8EEF3;*/
             width: 245px;
             height: 260px;
             border-radius: 5px;
-            box-shadow: 0 10px 30px 3px rgba(0, 0, 0, 0.2), 10px 0px 30px 3px rgba(0, 0, 0, 0.2), -10px 0px 30px 3px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px 3px rgba(0, 0, 0, 0.2), 10px 0 30px 3px rgba(0, 0, 0, 0.2), -10px 0px 30px 3px rgba(0, 0, 0, 0.2);
 
             form {
                 font-family: $label-font;
@@ -131,6 +145,7 @@
                     background-color: #e8eef3;
                     width: 100%;
                     height: 40px;
+                    cursor: pointer;
 
                 }
             }

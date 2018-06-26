@@ -1,0 +1,21 @@
+{
+  "spices": [
+    {
+      "name": "cinnamon",
+      "image": "https://cdn.cnn.com/cnnnext/dam/assets/170807181545-herbs-and-spices-cinnamon-super-169.jpg",
+      "type": "spice"
+    },
+    {
+      "name": "cardamon",
+      "image": "https://5.imimg.com/data5/SA/UE/MY-19740073/cardamom-7mm-7-5mm-500x500.jpg",
+      "type": "spice"
+    },
+    {
+      "name": "clove",
+      "image": "http://o-chae.com/uploads/posts/2014-02/1391961879_chay-s-gvozdikoy.jpg",
+      "type": "spice"
+    }
+  ]
+}
+
+// https://api.myjson.com/bins/1ed2lq
